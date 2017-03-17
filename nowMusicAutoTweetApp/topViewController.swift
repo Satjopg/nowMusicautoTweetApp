@@ -7,15 +7,21 @@
 //
 
 import UIKit
+import Accounts
 import Material
+import AlamofireImage
 
-class topViewController: UIViewController {
+class topViewController: UIViewController, UITextViewDelegate {
     
     @IBOutlet weak var accountBtn: UIBarButtonItem!
+    
+    var twitter_Account:ACAccount!
+    var icon_url:URL!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.view.backgroundColor = Color.amber.lighten5
         accountBtn.image = Icon.settings
     }
 
@@ -28,6 +34,12 @@ class topViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
-
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toTweetView" {
+            let nextVC = segue.destination as! tweetViewController
+            nextVC.twitter_account = self.twitter_Account
+            nextVC.icon_url = self.icon_url
+        }
+    }
 }
 

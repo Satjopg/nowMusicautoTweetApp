@@ -16,6 +16,7 @@ class accountSelectViewController: UIViewController, UINavigationBarDelegate, UI
     @IBOutlet weak var accountTable: UITableView!
     var twitter_accounts:[ACAccount] = []
     var activity_indicator:UIActivityIndicatorView!
+    var icon_urls:[URL] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,6 +46,7 @@ class accountSelectViewController: UIViewController, UINavigationBarDelegate, UI
         let account:ACAccount = twitter_accounts[indexPath.row]
         get_icon_url(user: account) { (responseURL) in
             cell.setup_icon(icon_url: responseURL)
+            self.icon_urls.append(responseURL)
         }
         cell.setup(name: account.userFullName, screen_name: account.username)
         return cell
@@ -52,6 +54,10 @@ class accountSelectViewController: UIViewController, UINavigationBarDelegate, UI
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return twitter_accounts.count
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     private func setup_table() {
@@ -68,6 +74,17 @@ class accountSelectViewController: UIViewController, UINavigationBarDelegate, UI
         activity_indicator.hidesWhenStopped = true
         activity_indicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
         self.view.addSubview(activity_indicator)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toTopViewSegue" {
+            let select_index = accountTable.indexPathForSelectedRow?.item
+            let nextNavi = segue.destination as! UINavigationController
+            let nextVC = nextNavi.topViewController as! topViewController
+            
+            nextVC.twitter_Account = twitter_accounts[select_index!]
+            nextVC.icon_url = icon_urls[select_index!]
+        }
     }
     
 }

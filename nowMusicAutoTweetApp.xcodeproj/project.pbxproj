@@ -21,6 +21,7 @@
 		6047666A1E7A65CC000FF9A1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 604766681E7A65CC000FF9A1 /* Main.storyboard */; };
 		6047666C1E7A65CC000FF9A1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6047666B1E7A65CC000FF9A1 /* Assets.xcassets */; };
 		6047666F1E7A65CC000FF9A1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6047666D1E7A65CC000FF9A1 /* LaunchScreen.storyboard */; };
+		60FDC6AD1E7BDEF500AB9D36 /* tweetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FDC6AC1E7BDEF500AB9D36 /* tweetViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		6047666B1E7A65CC000FF9A1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6047666E1E7A65CC000FF9A1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		604766701E7A65CC000FF9A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		60FDC6AC1E7BDEF500AB9D36 /* tweetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tweetViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 				604766661E7A65CC000FF9A1 /* topViewController.swift */,
 				602D805C1E7AD5130030BE42 /* accountSelectViewController.swift */,
 				602D805E1E7AEA430030BE42 /* accountTableCell.swift */,
+				60FDC6AC1E7BDEF500AB9D36 /* tweetViewController.swift */,
 				602D80601E7AEBFA0030BE42 /* twitter_helper.swift */,
 				604766681E7A65CC000FF9A1 /* Main.storyboard */,
 				6047666B1E7A65CC000FF9A1 /* Assets.xcassets */,
@@ -205,6 +208,7 @@
 				604766671E7A65CC000FF9A1 /* topViewController.swift in Sources */,
 				602D80611E7AEBFA0030BE42 /* twitter_helper.swift in Sources */,
 				602D805F1E7AEA430030BE42 /* accountTableCell.swift in Sources */,
+				60FDC6AD1E7BDEF500AB9D36 /* tweetViewController.swift in Sources */,
 				604766651E7A65CC000FF9A1 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

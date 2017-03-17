@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="izw-sH-9l7">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="nRs-Vg-bDC">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -78,7 +78,7 @@
                                             <outlet property="nameLabel" destination="wLS-G5-Mfk" id="q0q-SU-LCU"/>
                                             <outlet property="profileIcon" destination="I80-rW-rMZ" id="yGK-E4-We3"/>
                                             <outlet property="screenNameLabel" destination="tpB-3x-vNW" id="hNH-P5-2n5"/>
-                                            <segue destination="izw-sH-9l7" kind="presentation" identifier="toTopViewSegue" id="zfS-3e-pq5"/>
+                                            <segue destination="izw-sH-9l7" kind="show" identifier="toTopViewSegue" id="58V-Te-NwP"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -108,12 +108,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FZT-FX-pVY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1082" y="-158"/>
+            <point key="canvasLocation" x="1083" y="-242"/>
         </scene>
-        <!--Top View Controller-->
+        <!--Music-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="topView" id="BYZ-38-t0r" customClass="topViewController" customModule="nowMusicAutoTweetApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="topView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="topViewController" customModule="nowMusicAutoTweetApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="cX8-GJ-iVh"/>
                         <viewControllerLayoutGuide type="bottom" id="4oR-hd-NM1"/>
@@ -123,10 +123,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" id="q3T-0h-mzC">
-                        <barButtonItem key="rightBarButtonItem" id="Y0C-Hi-OcB">
+                    <navigationItem key="navigationItem" title="Music" id="q3T-0h-mzC">
+                        <barButtonItem key="leftBarButtonItem" id="Y0C-Hi-OcB">
                             <connections>
                                 <action selector="pushacBtn:" destination="BYZ-38-t0r" id="cSS-xK-TvB"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="Fgr-y8-etP">
+                            <connections>
+                                <segue destination="WNf-zk-xbK" kind="presentation" identifier="toTweetView" id="JhH-2s-Xi2"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -136,7 +141,51 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1083.2" y="603.59820089955031"/>
+            <point key="canvasLocation" x="1082.4000000000001" y="603.14842578710648"/>
+        </scene>
+        <!--Tweet View Controller-->
+        <scene sceneID="bjV-cb-Gk1">
+            <objects>
+                <viewController storyboardIdentifier="musicTweetview" useStoryboardIdentifierAsRestorationIdentifier="YES" id="WNf-zk-xbK" customClass="tweetViewController" customModule="nowMusicAutoTweetApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cTQ-pb-Adk"/>
+                        <viewControllerLayoutGuide type="bottom" id="Hb3-mz-jQG"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="nz1-Aw-xZy">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vFL-Io-jIf">
+                                <rect key="frame" x="16" y="26" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oLN-Jy-q5R" customClass="IconButton" customModule="Material">
+                                <rect key="frame" x="321" y="24" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="tapCancelBtn:" destination="WNf-zk-xbK" eventType="touchUpInside" id="30Z-WR-e7z"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="mF8-be-JdX">
+                                <rect key="frame" x="22" y="77" width="343" height="272"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="cancelBtn" destination="oLN-Jy-q5R" id="Zgx-dc-XgN"/>
+                        <outlet property="icon_view" destination="vFL-Io-jIf" id="CvL-uB-a3S"/>
+                        <outlet property="tweet_digestview" destination="mF8-be-JdX" id="rsY-1h-xhP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HEB-7k-DF4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1917.5999999999999" y="602.24887556221893"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="NIt-QC-Ye9">
