@@ -51,3 +51,20 @@ func get_icon_url(user:ACAccount, callback:@escaping (URL) -> Void) -> Void {
         callback(NSURL(string: bigger_url) as! URL)
     })
 }
+
+func send_tweet(user:ACAccount, tweet:String, callback:@escaping (Bool) -> Void) -> Void {
+    let (tweet_url, params) = (URL(string: "https://api.twitter.com/1.1/statuses/update.json"), ["status":tweet])
+    let tweet_request = SLRequest(forServiceType: SLServiceTypeTwitter,
+                                  requestMethod: .POST,
+                                  url: tweet_url,
+                                  parameters: params)
+    tweet_request?.account = user
+    
+    tweet_request?.perform(handler: { (responsedata, urlresponse, error) in
+        if error != nil {
+            print("error:\(error)")
+            callback(false)
+        }
+        callback(true)
+    })
+}
