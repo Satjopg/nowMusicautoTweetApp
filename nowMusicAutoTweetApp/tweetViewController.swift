@@ -43,7 +43,7 @@ class tweetViewController: UIViewController, UIToolbarDelegate {
     }
     
     private func setup_textview() {
-        tweet_digestview.text = "now playing " + music_title + ":" + music_artist + " #nowplaying"
+        tweet_digestview.text = music_title + ":" + music_artist + " #nowplaying"
         
         let keyboard_toolbar = UIToolbar(frame: CGRect(x: 0, y: self.view.bounds.height/2, width: 320, height: 40))
         keyboard_toolbar.delegate = self

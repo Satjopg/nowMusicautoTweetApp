@@ -16,7 +16,7 @@ class accountSelectViewController: UIViewController, UINavigationBarDelegate, UI
     @IBOutlet weak var accountTable: UITableView!
     var twitter_accounts:[ACAccount] = []
     var activity_indicator:UIActivityIndicatorView!
-    var icon_urls:[URL] = []
+    var icon_urls:[String:URL] = [:]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,8 +46,7 @@ class accountSelectViewController: UIViewController, UINavigationBarDelegate, UI
         let account:ACAccount = twitter_accounts[indexPath.row]
         get_icon_url(user: account) { (responseURL) in
             cell.setup_icon(icon_url: responseURL)
-            print(responseURL)
-            self.icon_urls.append(responseURL)
+            self.icon_urls = [account.userFullName:responseURL]
         }
         cell.setup(name: account.userFullName, screen_name: account.username)
         return cell
@@ -82,12 +81,9 @@ class accountSelectViewController: UIViewController, UINavigationBarDelegate, UI
             let select_index = accountTable.indexPathForSelectedRow?.item
             let nextNavi = segue.destination as! UINavigationController
             let nextVC = nextNavi.topViewController as! topViewController
-            print(select_index ?? "nil")
-            print(twitter_accounts.count)
-            print(icon_urls.count)
-            
+
             nextVC.twitter_Account = twitter_accounts[select_index!]
-            nextVC.icon_url = icon_urls[select_index!]
+            nextVC.icon_url = icon_urls[twitter_accounts[select_index!].userFullName]
         }
     }
     

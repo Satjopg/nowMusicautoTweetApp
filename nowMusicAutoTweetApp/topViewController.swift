@@ -23,6 +23,7 @@ class topViewController: UIViewController, UITextViewDelegate {
     var twitter_Account:ACAccount!
     var icon_url:URL!
     var MusicPlayer:MPMusicPlayerController = MPMusicPlayerController()
+    var notificationCenter:NotificationCenter!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +33,10 @@ class topViewController: UIViewController, UITextViewDelegate {
         now_music()
         self.view.backgroundColor = Color.amber.lighten5
         accountBtn.image = Icon.settings
+        notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(topViewController.nowPlayingItemChanged), name: NSNotification.Name.MPMusicPlayerControllerNowPlayingItemDidChange, object: MusicPlayer)
+        MusicPlayer.beginGeneratingPlaybackNotifications()
+    
     }
 
     override func didReceiveMemoryWarning() {
@@ -59,6 +64,17 @@ class topViewController: UIViewController, UITextViewDelegate {
             music_artist.text = "not found"
             music_view.af_setImage(withURL: NSURL(string: "https://goo.gl/X2jqJ4") as! URL)
         }
+    }
+    
+    func nowPlayingItemChanged(notification: NSNotification) {
+        viewDidLoad()
+    }
+    
+    deinit {
+        notificationCenter = NotificationCenter.default
+        notificationCenter.removeObserver(self, name: NSNotification.Name.MPMusicPlayerControllerNowPlayingItemDidChange, object: MusicPlayer)
+        // ミュージックプレーヤー通知の無効化
+        MusicPlayer.endGeneratingPlaybackNotifications()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
