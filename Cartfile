@@ -3,3 +3,4 @@ github "SwiftyJSON/SwiftyJSON"
 github "Alamofire/AlamofireImage" ~> 3.1
 github "CosmicMind/Material"
 github "realm/realm-cocoa"
+github "dekatotoro/SlideMenuControllerSwift"

@@ -43,10 +43,6 @@ class topViewController: UIViewController, UITextViewDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-    @IBAction func pushacBtn(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-    }
     
     func now_music() {
         if let now_music = MusicPlayer.nowPlayingItem {
